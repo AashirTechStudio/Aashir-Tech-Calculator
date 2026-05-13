@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI FUTURE CALCULATOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Custom Cursor -->
+<div id="cursor-orb"></div>
+<div id="cursor-follower"></div>
+<div id="cursor-trail-container"></div>
+<div id="particle-burst-container"></div>
+
+<!-- Animated Background -->
+<div id="bg-canvas-wrapper">
+  <canvas id="bg-canvas"></canvas>
+  <div class="holographic-fog"></div>
+  <div class="energy-wave-1"></div>
+  <div class="energy-wave-2"></div>
+  <div class="energy-wave-3"></div>
+  <div class="cyber-grid"></div>
+</div>
+
+<!-- Main Container -->
+<main class="main-container">
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">NEXUS<span class="logo-accent">AI</span></span>
+    </div>
+    <nav class="header-nav">
+      <span class="nav-item active">CALCULATOR</span>
+      <span class="nav-item">ANALYTICS</span>
+      <span class="nav-item">SYSTEMS</span>
+    </nav>
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span class="status-text">ONLINE</span>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+
+      <!-- Profile Card (Left) -->
+      <div class="profile-side">
+        <div class="profile-card">
+          <div class="profile-outer-ring ring-1"></div>
+          <div class="profile-outer-ring ring-2"></div>
+          <div class="profile-outer-ring ring-3"></div>
+          <div class="profile-glow-aura"></div>
+          <div class="profile-holographic-frame">
+            <div class="frame-corner fc-tl"></div>
+            <div class="frame-corner fc-tr"></div>
+            <div class="frame-corner fc-bl"></div>
+            <div class="frame-corner fc-br"></div>
+            <div class="profile-img-wrapper">
+              <img id="profile-image" src="" alt="Profile" class="profile-img">
+              <div class="profile-scan-line"></div>
+              <div class="profile-overlay-grid"></div>
+            </div>
+          </div>
+          <div class="profile-info">
+            <div class="profile-badge">
+              <span class="badge-icon">◈</span>
+              <span>AI OPERATOR</span>
+            </div>
+            <h2 class="profile-name">NEXUS USER</h2>
+            <p class="profile-sub">Neural Interface Active</p>
+            <div class="profile-stats">
+              <div class="stat-item">
+                <div class="stat-val">99.8%</div>
+                <div class="stat-lbl">UPTIME</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">∞</div>
+                <div class="stat-lbl">COMPUTE</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">A+</div>
+                <div class="stat-lbl">GRADE</div>
+              </div>
+            </div>
+          </div>
+          <div class="profile-particles">
+            <div class="pp pp1"></div>
+            <div class="pp pp2"></div>
+            <div class="pp pp3"></div>
+            <div class="pp pp4"></div>
+            <div class="pp pp5"></div>
+          </div>
+        </div>
+
+        <!-- Hero Title below profile on desktop -->
+        <div class="hero-text">
+          <div class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            <span>NEXT GEN SYSTEM v4.2</span>
+            <span class="eyebrow-line"></span>
+          </div>
+          <h1 class="hero-title">
+            AI FUTURE<br>
+            <span class="title-accent">CALCULATOR</span>
+          </h1>
+          <p class="hero-subtitle">Next Generation Smart Calculation Experience</p>
+          <div class="hero-tags">
+            <span class="tag">QUANTUM CORE</span>
+            <span class="tag">NEURAL NET</span>
+            <span class="tag">ZERO LAG</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculator (Right) -->
+      <div class="calculator-side">
+        <div class="calculator-glass">
+          <!-- Top decorative bar -->
+          <div class="calc-top-bar">
+            <div class="calc-dots">
+              <span class="dot dot-r"></span>
+              <span class="dot dot-y"></span>
+              <span class="dot dot-g"></span>
+            </div>
+            <span class="calc-title-label">NEXUS CALC // QUANTUM ENGINE</span>
+            <div class="calc-signal">
+              <span class="sig-bar sb1"></span>
+              <span class="sig-bar sb2"></span>
+              <span class="sig-bar sb3"></span>
+              <span class="sig-bar sb4"></span>
+            </div>
+          </div>
+
+          <!-- Display -->
+          <div class="calc-display">
+            <div class="display-inner">
+              <div class="display-label">QUANTUM PROCESSOR</div>
+              <div id="calc-preview" class="calc-preview"> </div>
+              <div id="calc-main" class="calc-main">0</div>
+              <div class="display-scanline"></div>
+            </div>
+          </div>
+
+          <!-- Mode Toggle -->
+          <div class="mode-toggle">
+            <button class="mode-btn active" id="basicMode" onclick="setMode('basic')">BASIC</button>
+            <button class="mode-btn" id="sciMode" onclick="setMode('sci')">SCIENTIFIC</button>
+          </div>
+
+          <!-- Basic Buttons -->
+          <div class="calc-buttons" id="basicButtons">
+            <!-- Row 1 -->
+            <button class="calc-btn btn-special" onclick="clearAll()" data-label="AC">AC</button>
+            <button class="calc-btn btn-special" onclick="toggleSign()" data-label="+/-">+/-</button>
+            <button class="calc-btn btn-special" onclick="percentage()" data-label="%">%</button>
+            <button class="calc-btn btn-op" onclick="setOperator('÷')" data-label="÷">÷</button>
+
+            <!-- Row 2 -->
+            <button class="calc-btn btn-num" onclick="inputNum('7')" data-label="7">7</button>
+            <button class="calc-btn btn-num" onclick="inputNum('8')" data-label="8">8</button>
+            <button class="calc-btn btn-num" onclick="inputNum('9')" data-label="9">9</button>
+            <button class="calc-btn btn-op" onclick="setOperator('×')" data-label="×">×</button>
+
+            <!-- Row 3 -->
+            <button class="calc-btn btn-num" onclick="inputNum('4')" data-label="4">4</button>
+            <button class="calc-btn btn-num" onclick="inputNum('5')" data-label="5">5</button>
+            <button class="calc-btn btn-num" onclick="inputNum('6')" data-label="6">6</button>
+            <button class="calc-btn btn-op" onclick="setOperator('-')" data-label="-">−</button>
+
+            <!-- Row 4 -->
+            <button class="calc-btn btn-num" onclick="inputNum('1')" data-label="1">1</button>
+            <button class="calc-btn btn-num" onclick="inputNum('2')" data-label="2">2</button>
+            <button class="calc-btn btn-num" onclick="inputNum('3')" data-label="3">3</button>
+            <button class="calc-btn btn-op" onclick="setOperator('+')" data-label="+">+</button>
+
+            <!-- Row 5 -->
+            <button class="calc-btn btn-num btn-zero" onclick="inputNum('0')" data-label="0">0</button>
+            <button class="calc-btn btn-num" onclick="inputDecimal()" data-label=".">.</button>
+            <button class="calc-btn btn-del" onclick="deleteLast()" data-label="⌫">⌫</button>
+            <button class="calc-btn btn-eq" onclick="calculate()" data-label="=">=</button>
+          </div>
+
+          <!-- Scientific Buttons -->
+          <div class="calc-buttons sci-buttons hidden" id="sciButtons">
+            <button class="calc-btn btn-sci" onclick="sciFunc('sin')" data-label="sin">sin</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('cos')" data-label="cos">cos</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('tan')" data-label="tan">tan</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('log')" data-label="log">log</button>
+
+            <button class="calc-btn btn-sci" onclick="sciFunc('ln')" data-label="ln">ln</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('sqrt')" data-label="√">√</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('pow2')" data-label="x²">x²</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('pow3')" data-label="x³">x³</button>
+
+            <button class="calc-btn btn-sci" onclick="sciFunc('inv')" data-label="1/x">1/x</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('pi')" data-label="π">π</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('e')" data-label="e">e</button>
+            <button class="calc-btn btn-sci" onclick="sciFunc('abs')" data-label="|x|">|x|</button>
+
+            <button class="calc-btn btn-special" onclick="clearAll()" data-label="AC">AC</button>
+            <button class="calc-btn btn-special" onclick="percentage()" data-label="%">%</button>
+            <button class="calc-btn btn-del" onclick="deleteLast()" data-label="⌫">⌫</button>
+            <button class="calc-btn btn-op" onclick="setOperator('÷')" data-label="÷">÷</button>
+
+            <button class="calc-btn btn-num" onclick="inputNum('7')" data-label="7">7</button>
+            <button class="calc-btn btn-num" onclick="inputNum('8')" data-label="8">8</button>
+            <button class="calc-btn btn-num" onclick="inputNum('9')" data-label="9">9</button>
+            <button class="calc-btn btn-op" onclick="setOperator('×')" data-label="×">×</button>
+
+            <button class="calc-btn btn-num" onclick="inputNum('4')" data-label="4">4</button>
+            <button class="calc-btn btn-num" onclick="inputNum('5')" data-label="5">5</button>
+            <button class="calc-btn btn-num" onclick="inputNum('6')" data-label="6">6</button>
+            <button class="calc-btn btn-op" onclick="setOperator('-')" data-label="-">−</button>
+
+            <button class="calc-btn btn-num" onclick="inputNum('1')" data-label="1">1</button>
+            <button class="calc-btn btn-num" onclick="inputNum('2')" data-label="2">2</button>
+            <button class="calc-btn btn-num" onclick="inputNum('3')" data-label="3">3</button>
+            <button class="calc-btn btn-op" onclick="setOperator('+')" data-label="+">+</button>
+
+            <button class="calc-btn btn-num btn-zero" onclick="inputNum('0')" data-label="0">0</button>
+            <button class="calc-btn btn-num" onclick="inputDecimal()" data-label=".">.</button>
+            <button class="calc-btn btn-mem" onclick="memStore()" data-label="MS">MS</button>
+            <button class="calc-btn btn-eq" onclick="calculate()" data-label="=">=</button>
+          </div>
+
+          <!-- Memory Bar -->
+          <div class="memory-bar">
+            <button class="mem-btn" onclick="memClear()">MC</button>
+            <button class="mem-btn" onclick="memRecall()">MR</button>
+            <button class="mem-btn" onclick="memAdd()">M+</button>
+            <button class="mem-btn" onclick="memSub()">M−</button>
+            <div class="mem-display">
+              MEM: <span id="memVal">0</span>
+            </div>
+          </div>
+
+          <!-- Power visual bar -->
+          <div class="calc-power-bar">
+            <div class="power-fill" id="powerFill"></div>
+            <span class="power-label">QUANTUM POWER</span>
+          </div>
+
+          <!-- Bottom glow reflection -->
+          <div class="calc-reflection"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
